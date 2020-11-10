@@ -1,5 +1,5 @@
-package Functions;
-import Number.Number;
+package edu.epam.task1.Functions;
+import edu.epam.task1.Number.Number;
 
 public class NumberFunction {
     public static int NumberSqd(Number number){
