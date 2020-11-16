@@ -4,9 +4,10 @@ import edu.epam.day3.task.product.Car;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class CarService {
-    public ArrayList<Car> SearchCarModel(ArrayList<Car> cars, String model){
+    public List<Car> SearchCarModel(List<Car> cars, String model){
         ArrayList<Car> result = new ArrayList<Car>();
         Iterator<Car> iterator = cars.iterator();
         while(iterator.hasNext()){
@@ -18,7 +19,7 @@ public class CarService {
         return result;
     }
 
-    public ArrayList<Car> SearchCarModelYear(ArrayList<Car> cars, String model, int year){
+    public List<Car> SearchCarModelYear(List<Car> cars, String model, int year){
         ArrayList<Car> result = new ArrayList<Car>();
         Iterator<Car> iterator = cars.iterator();
         while(iterator.hasNext()){
@@ -30,7 +31,7 @@ public class CarService {
         return result;
     }
 
-    public ArrayList<Car> SearchCarYearPrice(ArrayList<Car> cars, int year, int price){
+    public List<Car> SearchCarYearPrice(List<Car> cars, int year, int price){
         ArrayList<Car> result = new ArrayList<Car>();
         Iterator<Car> iterator = cars.iterator();
         while(iterator.hasNext()){

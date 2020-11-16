@@ -1,87 +1,51 @@
 package edu.epam.day3.task.service;
 
+import com.sun.source.tree.AssertTree;
 import edu.epam.day3.task.product.Car;
-import edu.epam.day3.task.service.CarService;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.*;
 
 import java.util.ArrayList;
-
-import static org.testng.Assert.*;
+import java.util.Iterator;
 
 public class CarServiceTest {
-    ArrayList<Car> cars;
-    int car1, car2, car3, car4, car5;
+@DataProvider(name = "createCarsArray")
+public Object[] createCarsArray() {
+    ArrayList<Car> cars =new ArrayList<Car>();
+    cars.add(new Car("Skoda", "Octavia", 2008, "black", 20000, "2801AB-7"));
+    cars.add(new Car("Skoda", "Octavia", 2000, "black", 15000, "9932AB-7"));
+    cars.add(new Car("Skoda", "Rapid", 2015, "black", 28000, "4598AT-1"));
+    cars.add(new Car("Skoda", "Rapid", 2010, "black", 22000, "2255TB-5"));
+    cars.add(new Car("Skoda", "Rapid", 1999, "black", 12000, "5533AO-2"));
+    cars.add(new Car("WV", "Polo", 2020, "black", 30000, "2213CK-3"));
+    cars.add(new Car("WV", "Polo", 2018, "black", 28000, "3321AM-3"));
+    return cars.toArray();
+}
 
-    @BeforeMethod
-    public void setArray(){
-        cars = new ArrayList<Car>();
-        car1 = (int) (Math.random()*1000);
-        car2 = (int) (Math.random()*1000);
-        car3 = (int) (Math.random()*1000);
-        car4 = (int) (Math.random()*1000);
-        car5 = (int) (Math.random()*1000);
-        cars.add(new Car(""+car1,""+car1,car1,""+car1,car1,""+car1));
-        cars.add(new Car(""+car2,""+car3,car2,""+car2,car2,""+car2));
-        cars.add(new Car(""+car3,""+car3,car3,""+car3,car3,""+car3));
-        cars.add(new Car(""+car4,""+car4,car4,""+car4,car4,""+car4));
-        cars.add(new Car(""+car5,""+car5,car5,""+car5,car5,""+car5));
-    }
+    @Test(dataProvider = "createCarsArray")
+    public void testSearchCarModel(Object[] cars){
+        ArrayList<Car> arrayCars = new ArrayList<Car>();
+        for (int i = 0;i< cars.length;i++){
+            arrayCars.add((Car) cars[i]);
+        }
+        ArrayList<Car> result = (ArrayList<Car>) new CarService().SearchCarModel(arrayCars, "Skoda");
+        Iterator<Car> iterator = result.iterator();
+        if(iterator.next().getId()==0&&iterator.next().getId()==2
+                &&iterator.next().getId()==3&&iterator.next().getId()==4&&iterator.next().getId()==1){
 
-    @Test
-    public void testSearchCarModel(){
-        if (new CarService().SearchCarModel(cars,""+car1)!=new CarService().SearchCarModel(cars, ""+car1)){
-            fail();
         }
-        if (new CarService().SearchCarModel(cars,""+car2)!=new CarService().SearchCarModel(cars, ""+car2)){
-            fail();
-        }
-        if (new CarService().SearchCarModel(cars,""+car3)!=new CarService().SearchCarModel(cars, ""+car3)){
-            fail();
-        }
-        if (new CarService().SearchCarModel(cars,""+car4)!=new CarService().SearchCarModel(cars, ""+car4)){
-            fail();
-        }
-        if (new CarService().SearchCarModel(cars,""+car5)!=new CarService().SearchCarModel(cars, ""+car5)){
-            fail();
-        }
+
     }
 
     @Test
     public void testSearchCarModelYear() {
-        if (new CarService().SearchCarModelYear(cars,""+car1, car1)!=new CarService().SearchCarModelYear(cars, ""+car1, car1)){
-            fail();
-        }
-        if (new CarService().SearchCarModelYear(cars,""+car2, car2)!=new CarService().SearchCarModelYear(cars, ""+car2, car2)){
-            fail();
-        }
-        if (new CarService().SearchCarModelYear(cars,""+car3, car3)!=new CarService().SearchCarModelYear(cars, ""+car3, car3)){
-            fail();
-        }
-        if (new CarService().SearchCarModelYear(cars,""+car4, car5)!=new CarService().SearchCarModelYear(cars, ""+car4, car4)){
-            fail();
-        }
-        if (new CarService().SearchCarModelYear(cars,""+car5, car5)!=new CarService().SearchCarModelYear(cars, ""+car5, car5)){
-            fail();
-        }
+
     }
 
     @Test
     public void testSearchCarYearPrice() {
-        if (new CarService().SearchCarYearPrice(cars,car1, car1)!=new CarService().SearchCarYearPrice(cars, car1, car1)){
-            fail();
-        }
-        if (new CarService().SearchCarYearPrice(cars,car1, car1)!=new CarService().SearchCarYearPrice(cars, car1, car1)){
-            fail();
-        }
-        if (new CarService().SearchCarYearPrice(cars,car1, car1)!=new CarService().SearchCarYearPrice(cars, car1, car1)){
-            fail();
-        }
-        if (new CarService().SearchCarYearPrice(cars,car1, car1)!=new CarService().SearchCarYearPrice(cars, car1, car1)){
-            fail();
-        }
-        if (new CarService().SearchCarYearPrice(cars,car1, car1)!=new CarService().SearchCarYearPrice(cars, car1, car1)){
-            fail();
-        }
+
     }
 }
