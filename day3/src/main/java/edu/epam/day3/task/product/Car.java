@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Car {
-    private static int count = 0;
+    private static int count = 0;// util
     private int id;
     private String model;
     private String brand;
@@ -16,7 +16,7 @@ public class Car {
 
 
     public Car(String model, String brand, int year, String color, int price, String number) {
-        this.id = count++;
+        this.id = count++;//util
         this.setModel(model);
         this.setBrand(brand);
         this.setYear(year);
@@ -25,7 +25,7 @@ public class Car {
         this.setNumber(number);
     }
 
-    public Car() {
+ /*   public Car() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             try {
@@ -48,7 +48,7 @@ public class Car {
                 System.out.println("Something wrong. Try again.");
             }
         }
-    }
+    }*/
 
     public String getModel() {
         return model;

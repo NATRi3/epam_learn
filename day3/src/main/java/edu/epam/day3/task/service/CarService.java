@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CarService {
-    public List<Car> SearchCarModel(List<Car> cars, String model){
+    public List<Car> searchCarModel(List<Car> cars, String model){
         ArrayList<Car> result = new ArrayList<Car>();
         Iterator<Car> iterator = cars.iterator();
         while(iterator.hasNext()){
@@ -19,7 +19,7 @@ public class CarService {
         return result;
     }
 
-    public List<Car> SearchCarModelYear(List<Car> cars, String model, int year){
+    public List<Car> searchCarModelYear(List<Car> cars, String model, int year){
         ArrayList<Car> result = new ArrayList<Car>();
         Iterator<Car> iterator = cars.iterator();
         while(iterator.hasNext()){
@@ -31,7 +31,7 @@ public class CarService {
         return result;
     }
 
-    public List<Car> SearchCarYearPrice(List<Car> cars, int year, int price){
+    public List<Car> searchCarYearPrice(List<Car> cars, int year, int price){
         ArrayList<Car> result = new ArrayList<Car>();
         Iterator<Car> iterator = cars.iterator();
         while(iterator.hasNext()){
