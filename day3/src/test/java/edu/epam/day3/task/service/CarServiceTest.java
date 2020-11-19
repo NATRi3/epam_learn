@@ -27,12 +27,9 @@ public Object[] createCarsArray() {
         CarService carService = new CarService();
         CarGarage result1;
         result1 = new CarGarage(carService.searchCarModel(garage.getCars(), "Skoda"));
-        result1.removeCar(0);
-        result1.removeCar(1);
-        result1.removeCar(2);
-        result1.removeCar(3);
-        result1.removeCar(4);
-        Assert.assertNull(result1);
+        garage.removeCar(6);
+        garage.removeCar(5);
+        Assert.assertEquals(result1,garage);
     }
 
     @Test(dataProvider = "createCarsArray")
@@ -41,9 +38,12 @@ public Object[] createCarsArray() {
         CarService carService = new CarService();
         CarGarage result1;
         result1 = new CarGarage(carService.searchCarModelYear(garage.getCars(),"Skoda", 2010));
-        result1.removeCar(2);
-        result1.removeCar(3);
-        Assert.assertNull(result1);
+        garage.removeCar(0);
+        garage.removeCar(1);
+        garage.removeCar(4);
+        garage.removeCar(5);
+        garage.removeCar(6);
+        Assert.assertEquals(result1,garage);
     }
 
     @Test(dataProvider = "createCarsArray")
@@ -52,7 +52,12 @@ public Object[] createCarsArray() {
         CarService carService = new CarService();
         CarGarage result1;
         result1 = new CarGarage(carService.searchCarYearPrice(garage.getCars(), 2000, 15000));
-        result1.removeCar(1);
-        Assert.assertNull(result1);
+        garage.removeCar(0);
+        garage.removeCar(2);
+        garage.removeCar(3);
+        garage.removeCar(4);
+        garage.removeCar(5);
+        garage.removeCar(6);
+        Assert.assertEquals(result1,garage);
     }
 }
