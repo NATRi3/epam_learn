@@ -1,13 +1,18 @@
 package edu.epam.ball.entity;
 
+import edu.epam.ball.exeption.WeightBallException;
+
 public class Ball {
     private double weight;
     private Color color;
 
-    public Ball(double weight, Color color) {
-
-        this.weight = weight;
-        this.color = color;
+    public Ball(double weight, Color color) throws WeightBallException {
+        if (weight <= 0) {
+            throw new WeightBallException("Weight can't be less or equals than zero");
+        } else {
+            this.weight = weight;
+            this.color = color;
+        }
     }
 
     public double getWeight() {
@@ -27,5 +32,11 @@ public class Ball {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(new StringBuilder().append("Ball{weight=").append(weight)
+        .append(", color=").append(color).append('}'));
     }
 }
